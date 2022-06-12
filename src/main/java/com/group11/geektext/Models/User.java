@@ -41,4 +41,21 @@ public class User {
     public void setOccupation(String occupation) {
         this.occupation = occupation;
     }
+
+    //This is when updating user
+    /*public String getFirstName() {
+    }
+
+    public String getLastName() {
+
+    }
+
+    public String getOccupation() {
+    }
+
+    public int getAge() {
+        return 0;
+    }
+
+     */
 }
