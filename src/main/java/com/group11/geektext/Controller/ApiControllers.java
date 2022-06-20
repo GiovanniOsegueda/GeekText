@@ -29,19 +29,20 @@ public class ApiControllers {
         return "Congratulation it SAVED!!!!";
     }
 
-    /*
-    @PostMapping(value = "update/{id}")
-    public String updateUser(long id, @RequestBody User user){
+    /*                                                                     //error: cannot resolve method
+    @PostMapping(value = "/update/{id}")
+    public String updateUser(long id, @RequestBody User user) {
         User updateUser = userRepo.findById(id).get();
         updateUser.setFirstName(user.getFirstName());
         updateUser.setLastName(user.getLastName());
-        updateUser.setAge(user.getAge());
-        updateUser.setOccupation(user.getoccupation());
+        updateUser.setEmail(user.getEmail());
+        updateUser.setCreditCard(user.getCreditCard());
         userRepo.save(updateUser);
         return "Updated user!";
     }
+     */
 
-    */
+
 
     @DeleteMapping(value = "/delete/{id}")
     public String deleteUser(@PathVariable long id){
