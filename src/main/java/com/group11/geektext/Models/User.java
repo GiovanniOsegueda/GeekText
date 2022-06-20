@@ -9,14 +9,53 @@ public class User {
     //@PrimaryKeyJoinColumn
     @GeneratedValue
     public long id;
+
     @Column
     public String firstName;
+
     @Column
     public String lastName;
+
     @Column
-    public int age;
+    public String email;
+
     @Column
-    public String occupation;
+    public String userPassword;
+
+    @Column
+    public String creditCard;
+
+    @Column
+    public String creditCardExpDateMonth;
+
+    @Column
+    public String getCreditCardExpDateYear;
+
+    @Column
+    public String shippingAddress;
+
+    @Column
+    public String shippingCity;
+
+    @Column
+    public String shippingZipCode;
+
+    @Column
+    public String ShippingState;
+
+
+    @Column
+    public String billingAddress;
+
+    @Column
+    public String billingCity;
+
+    @Column
+    public String billingState;
+
+    @Column
+    public String billingZipCode;
+
 
     public long getId() {
         return id;
@@ -34,28 +73,57 @@ public class User {
         this.lastName = lastName;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
+    public void setOccupation(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    //This is when updating user
-    /*public String getFirstName() {
+    public void setCreditCard(String creditCard) {
+        this.creditCard = creditCard;
     }
 
-    public String getLastName() {
-
+    public void setCreditCardExpDateMonth(String creditCardExpDateMonth) {
+        this.creditCardExpDateMonth = creditCardExpDateMonth;
     }
 
-    public String getOccupation() {
+    public void setGetCreditCardExpDateYear(String getCreditCardExpDateYear) {
+        this.getCreditCardExpDateYear = getCreditCardExpDateYear;
     }
 
-    public int getAge() {
-        return 0;
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
-     */
-}
+    public void setShippingCity(String shippingCity) {
+        this.shippingCity = shippingCity;
+    }
+
+    public void setShippingState(String shippingState) {
+        ShippingState = shippingState;
+    }
+
+    public void setShippingZipCode(String shippingZipCode) {
+        this.shippingZipCode = shippingZipCode;
+    }
+
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public void setBillingCity(String billingCity) {
+        this.billingCity = billingCity;
+    }
+
+    public void setBillingState(String billingState) {
+        this.billingState = billingState;
+    }
+
+    public void setBillingZipCode(String billingZipCode) {
+        this.billingZipCode = billingZipCode;
+    }
+
+
+}//closing class
