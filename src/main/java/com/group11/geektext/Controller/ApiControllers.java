@@ -1,6 +1,8 @@
 package com.group11.geektext.Controller;
 
+import com.group11.geektext.Models.Book;
 import com.group11.geektext.Models.User;
+import com.group11.geektext.Repo.BookRepo;
 import com.group11.geektext.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,9 @@ public class ApiControllers {
 
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private BookRepo bookRepo;
 
     @GetMapping(value = "/")
     public String getPage(){
@@ -42,8 +47,6 @@ public class ApiControllers {
     }
      */
 
-
-
     @DeleteMapping(value = "/delete/{id}")
     public String deleteUser(@PathVariable long id){
         User deleteUser = userRepo.findById(id).get();
@@ -51,4 +54,17 @@ public class ApiControllers {
         return "Deleted user with id: " + id;
     }
 
-}
+    @GetMapping(value = "/books")
+    public List<Book> getBook(){
+        return bookRepo.findAll();
+    }
+
+    @PostMapping(value = "/saveBookGeekText")
+    public String saveBook(@RequestBody Book book){
+        bookRepo.save(book);
+        return "Your book has been saved";
+    }
+
+
+
+}// Ending BookRepo class
