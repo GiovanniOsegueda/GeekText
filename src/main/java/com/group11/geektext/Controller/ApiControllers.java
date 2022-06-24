@@ -1,7 +1,9 @@
 package com.group11.geektext.Controller;
 
+import com.group11.geektext.Models.Author;
 import com.group11.geektext.Models.Book;
 import com.group11.geektext.Models.User;
+import com.group11.geektext.Repo.AuthorRepo;
 import com.group11.geektext.Repo.BookRepo;
 import com.group11.geektext.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class ApiControllers {
 
     @Autowired
     private BookRepo bookRepo;
+
+    @Autowired
+    private AuthorRepo authorRepo;
 
     @GetMapping(value = "/")
     public String getPage(){
@@ -63,6 +68,17 @@ public class ApiControllers {
     public String saveBook(@RequestBody Book book){
         bookRepo.save(book);
         return "Your book has been saved";
+    }
+
+    @GetMapping(value = "/ListAuthor")
+    public List<Author> getAuthor(){
+        return authorRepo.findAll();
+    }
+
+    @PostMapping(value = "/saveAuthor")
+    public String saveAuthor(@RequestBody Author author){
+        authorRepo.save(author);
+        return "Author is save!";
     }
 
 
