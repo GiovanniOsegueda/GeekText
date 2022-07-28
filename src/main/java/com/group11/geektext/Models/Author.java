@@ -8,51 +8,71 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Author {
-
+    // Finally change from public to private
     @Id
     @GeneratedValue
-    public long id;
+    private long Id;
 
     @Column
-    public String authorFirstName;
-    @Column
-    public String authorLastName;
-    @Column
-    public String authorBiography;
-    @Column
-    public String authorPublisher;
+    private String authorFirstName;
 
-    public long getId(){
-        return id;
+    @Column
+    private String authorLastName;
+
+    @Column
+    private String authorBiography;
+
+    @Column
+    private String authorPublisher;
+
+    @Column
+    private String authorFullName = authorFirstName + " " +authorLastName;
+
+    public long getId() {
+        return Id;
     }
-    public void setId(long id){
-        this.id = id;
+
+    public void setId(long id) {
+        Id = id;
     }
 
-    public void setFirstName(String authorFirstName) {
+    public String getAuthorFirstName() {
+        return authorFirstName;
+    }
+
+    public void setAuthorFirstName(String authorFirstName) {
         this.authorFirstName = authorFirstName;
     }
 
-    public void setLastName(String authorLastName){
+    public String getAuthorLastName() {
+        return authorLastName;
+    }
+
+    public void setAuthorLastName(String authorLastName) {
         this.authorLastName = authorLastName;
     }
 
-    public void setBiography(String authorBiography){
+    public String getAuthorBiography() {
+        return authorBiography;
+    }
+
+    public void setAuthorBiography(String authorBiography) {
         this.authorBiography = authorBiography;
     }
 
-    public void setPublisher(String authorPublisher){
+    public String getAuthorPublisher() {
+        return authorPublisher;
+    }
+
+    public void setAuthorPublisher(String authorPublisher) {
         this.authorPublisher = authorPublisher;
     }
 
+    public String getAuthorFullName() {
+        return authorFullName;
+    }
 
-
+    public void setAuthorFullName(String authorFullName) {
+        this.authorFullName = authorFullName;
+    }
 }
-    /*
-    @CreationTimestamp
-    private LocalDateTime date_created;
-
-    @UpdateTimestamp
-    private LocalDateTime date_updated;
-
-    */
