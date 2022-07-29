@@ -1,61 +1,84 @@
 package com.group11.geektext.Models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
 
     @Id
-    //@PrimaryKeyJoinColumn
     @GeneratedValue
-    public long id;
+    private long id;
 
     @Column
-    public String firstName;
+    private String firstName;
 
     @Column
-    public String lastName;
+    private String lastName;
+
+    @Column(name = "email")
+    private String email;
 
     @Column
-    public String email;
+    private String userPassword;
 
     @Column
-    public String userPassword;
+    private String creditCard;
 
     @Column
-    public String creditCard;
+    private String creditCardExpDateMonth;
 
     @Column
-    public String creditCardExpDateMonth;
+    private String getCreditCardExpDateYear;
 
     @Column
-    public String getCreditCardExpDateYear;
+    private String shippingAddress;
 
     @Column
-    public String shippingAddress;
+    private String shippingCity;
 
     @Column
-    public String shippingCity;
+    private String shippingZipCode;
 
     @Column
-    public String shippingZipCode;
-
-    @Column
-    public String ShippingState;
+    private String ShippingState;
 
 
     @Column
-    public String billingAddress;
+    private String billingAddress;
 
     @Column
-    public String billingCity;
+    private String billingCity;
 
     @Column
-    public String billingState;
+    private String billingState;
 
     @Column
-    public String billingZipCode;
+    private String billingZipCode;
 
+    @Transient
+    private String wishListName;
+
+    public String getWishListName() {
+        return wishListName;
+    }
+
+    public void setWishListName(String wishListName) {
+        this.wishListName = wishListName;
+    }
+
+    //getters and setters
+
+    @OneToMany
+    private List<WishList> wishList;
+
+    public List<WishList> getWishList() {
+        return wishList;
+    }
+
+    public void setWishList(List<WishList> wishList) {
+        this.wishList = wishList;
+    }
 
     public long getId() {
         return id;
@@ -77,7 +100,7 @@ public class User {
         this.email = email;
     }
 
-    public void setOccupation(String userPassword) {
+    public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
 
@@ -125,5 +148,63 @@ public class User {
         this.billingZipCode = billingZipCode;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public String getCreditCard() {
+        return creditCard;
+    }
+
+    public String getCreditCardExpDateMonth() {
+        return creditCardExpDateMonth;
+    }
+
+    public String getGetCreditCardExpDateYear() {
+        return getCreditCardExpDateYear;
+    }
+
+    public String getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public String getShippingCity() {
+        return shippingCity;
+    }
+
+    public String getShippingZipCode() {
+        return shippingZipCode;
+    }
+
+    public String getShippingState() {
+        return ShippingState;
+    }
+
+    public String getBillingAddress() {
+        return billingAddress;
+    }
+
+    public String getBillingCity() {
+        return billingCity;
+    }
+
+    public String getBillingState() {
+        return billingState;
+    }
+
+    public String getBillingZipCode() {
+        return billingZipCode;
+    }
 }//closing class
