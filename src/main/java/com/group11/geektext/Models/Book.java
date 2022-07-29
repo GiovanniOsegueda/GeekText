@@ -33,7 +33,7 @@ public class Book {
     public String yearPublished;
 
     @Column
-    public String bookCopiesSold;
+    public int bookCopiesSold;
 
     @Column
     public int bookRating;
@@ -102,11 +102,11 @@ public class Book {
         this.yearPublished = yearPublished;
     }
 
-    public String getBookCopiesSold() {
+    public int getBookCopiesSold() {
         return bookCopiesSold;
     }
 
-    public void setBookCopiesSold(String bookCopiesSold) {
+    public void setBookCopiesSold(int bookCopiesSold) {
         this.bookCopiesSold = bookCopiesSold;
     }
 
