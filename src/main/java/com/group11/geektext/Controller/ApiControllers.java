@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiControllers {
 
     // Clean up the APIController and now it's the welcome Screen
+
+    /**
+     *
+     * @return
+     */
     @GetMapping(value = "/")
     public String getPage(){
         return "Hello World From group 11!! WOOT WOOT";

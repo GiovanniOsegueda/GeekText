@@ -6,16 +6,20 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+ * List of information will pass through SQL
+ */
+
 public interface BookRepo extends JpaRepository<Book, String> {
-    @Query("SELECT b FROM Book b WHERE b.bookAuthor = ?1")
+    @Query("FROM Book WHERE bookAuthor = ?1")
     List<Book> fetchAllBooksByAuthor(String author);
 
-    @Query("SELECT b FROM Book b WHERE b.bookGenre = ?1")
+    @Query("FROM Book WHERE bookGenre = ?1")
     List<Book> fetchAllBooksByGenre(String genre);
 
-    @Query("SELECT b FROM Book b order by b.bookCopiesSold desc")
+    @Query("FROM Book order by bookCopiesSold desc")
     List<Book> fetchTopSoldBooks();
 
-    @Query("SELECT b FROM Book b WHERE b.bookRating >= ?1")
+    @Query("FROM Book WHERE bookRating >= ?1")
     List<Book> fetchAllBooksByRating(int rating);
 }

@@ -7,36 +7,36 @@ import javax.persistence.Id;
 @Entity
 public class Book {
 
-    @Column
-    public String bookName;
-
-    @Column
-    public String bookGenre;
-
-    @Column
-    public String bookPublisher;
-
-    @Column
-    public String bookAuthor;
-
-    @Column
-    public String bookDescription;
-
     @Id
     @Column
-    public String bookISBN;
+    private String bookISBN;
 
     @Column
-    public String bookPrice;
+    private String bookName;
 
     @Column
-    public String yearPublished;
+    private String bookGenre;
 
     @Column
-    public int bookCopiesSold;
+    private String bookPublisher;
 
     @Column
-    public int bookRating;
+    private String bookAuthor;
+
+    @Column
+    private String bookDescription;
+
+    @Column
+    private String bookPrice;
+
+    @Column
+    private String yearPublished;
+
+    @Column
+    private int bookCopiesSold;
+
+    @Column
+    private int bookRating;
 
     public String getBookName() {
         return bookName;
