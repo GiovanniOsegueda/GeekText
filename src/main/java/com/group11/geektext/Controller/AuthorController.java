@@ -1,16 +1,15 @@
  package com.group11.geektext.Controller;
 
-import net.bytebuddy.asm.Advice;
-import org.springframework.web.bind.annotation.*;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.group11.geektext.Models.Author;
-import com.group11.geektext.Repo.AuthorRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+ import com.group11.geektext.Models.Author;
+ import com.group11.geektext.Repo.AuthorRepo;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.http.HttpStatus;
+ import org.springframework.http.ResponseEntity;
+ import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+ import java.util.List;
 
- @RestController  //class is a controller (MVC)
+ @RestController
  @RequestMapping(path = "/authors")
  public class AuthorController
  {
@@ -18,31 +17,32 @@ import java.util.List;
      public AuthorRepo authorRepo;
 
      //POST
+     //curl localhost:8080/author/addAuthor -d first=first -d last=last
+     //curl localhost:8080/author/addAuthor -d first=first -d last=last -d biography="this is the authors bio" -d publisher=testPublisher
+
+     /**
+      * this method is used for saving author information
+      * @param author author information
+      * @return success/error message
+      */
      @PostMapping
-     public String saveAuthor(@RequestBody Author author){
-         authorRepo.save(author);
-         return "Author details saved successfully...!!!";
-     }
-    //Fetch request to all the authors
+     public ResponseEntity<String> saveAuthor(@RequestBody Author author){
+         List<Author> authors = authorRepo.findAuthorByAllDetails(author.getAuthorFirstName(),
+                 author.getAuthorLastName(), author.getAuthorPublisher());
+         if(authors==null || authors.size() == 0) {
+             authorRepo.save(author);
+             return new ResponseEntity<>("Author details saved successfully!!", HttpStatus.OK);
+         } else {
+             return new ResponseEntity<>("Author details are already present", HttpStatus.BAD_REQUEST);             // Show error messages when author is already present
+         }
+    }
+
+     /**
+      * this method is for getting all the author information
+      * @return list of authors
+      */
      @GetMapping
      public List<Author> getAllAuthors() {
          return authorRepo.findAll();
      }
-
-     //GET
-     //curl localhost:8080/author/findAuthorByName -d fullName="first last"
-     @GetMapping (path = "/findAuthorByName")
-     public List<Author> getAuthorFullName()
-     {
-         return authorRepo.findAll();
-     }
-
-     //GET
-     //curl test //curl -X GET localhost:8080/author/allAuthors
-     /*@GetMapping(path = "/allAuthors")
-     public @ResponseBody Iterable<Author> getAllAuthors ()
-     {
-         //returns a JSON/XML with all books
-         return authorRepo.findAll();
-     }*/
  }

@@ -1,23 +1,22 @@
 package com.group11.geektext.Models;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class User {
-
+    // change most of the variables to private.
     @Id
-    @GeneratedValue
-    private long id;
+    @Column(name = "email")
+    private String email;
 
     @Column
     private String firstName;
 
     @Column
     private String lastName;
-
-    @Column(name = "email")
-    private String email;
 
     @Column
     private String userPassword;
@@ -43,7 +42,6 @@ public class User {
     @Column
     private String ShippingState;
 
-
     @Column
     private String billingAddress;
 
@@ -55,38 +53,6 @@ public class User {
 
     @Column
     private String billingZipCode;
-
-    @Transient
-    private String wishListName;
-
-    public String getWishListName() {
-        return wishListName;
-    }
-
-    public void setWishListName(String wishListName) {
-        this.wishListName = wishListName;
-    }
-
-    //getters and setters
-
-    @OneToMany
-    private List<WishList> wishList;
-
-    public List<WishList> getWishList() {
-        return wishList;
-    }
-
-    public void setWishList(List<WishList> wishList) {
-        this.wishList = wishList;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
