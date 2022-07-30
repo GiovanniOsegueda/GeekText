@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
-    // change most of the variables to private
+    // change most of the variables to private.
     @Id
     @Column(name = "email")
     private String email;

@@ -49,7 +49,7 @@ public class UserController {
     /**
      * This method is going to create User
      * @param user
-     * @return Messages depending on if-return statement
+     * @return Messages depending on if-return statement.
      */
     @PostMapping
     public ResponseEntity<String> createUser(@RequestBody User user) {
@@ -98,7 +98,7 @@ public class UserController {
      * This method is for updating existing user information with new details
      * @param username user email
      * @param user user information
-     * @return status if it is success or failure
+     * @return status if it is success or failure.
      */
     @PutMapping(value = "/{username}")
     public ResponseEntity<String> updateUser(@PathVariable(name = "username") String username, @RequestBody User user) {
