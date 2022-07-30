@@ -4,8 +4,14 @@ import com.group11.geektext.Models.ShoppingCart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface ShoppingCartRepo extends JpaRepository<ShoppingCart, Long> {
+import java.util.List;
 
-    @Query("delete from ShoppingCart where userId = ?1")
+public interface ShoppingCartRepo extends JpaRepository<ShoppingCart, Integer> {
+
+    @Query("delete from ShoppingCart where email = ?1")
     public void deleteShoppingCartsByUserId(int userId);
+
+    @Query("from ShoppingCart where email = ?1")
+    public List<ShoppingCart> getShoppingCartByEmail(String email);
+
 }

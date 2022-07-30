@@ -1,9 +1,7 @@
 package com.group11.geektext.Models;
 
 import javax.persistence.*;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 @Table(name = "shopping_cart")
@@ -12,46 +10,35 @@ public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private int shoppingCartId;
+    private int cartId = 0;
 
     @Column
-    private long userId;
+    private String email;
 
-    @Column
-    private String bookId;
+    @Transient
+    private List<CartItem> cartItems;
 
-    @Column
-    private int quantity;
-
-    public long getUserId() {
-        return userId;
+    public int getCartId() {
+        return cartId;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
     }
 
-    public int getShoppingCartId() {
-        return shoppingCartId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setShoppingCartId(int shoppingCartId) {
-        this.shoppingCartId = shoppingCartId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getBookId() {
-        return bookId;
+    public List<CartItem> getCartItems() {
+        return cartItems;
     }
 
-    public void setBookId(String bookId) {
-        this.bookId = bookId;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
     }
 }

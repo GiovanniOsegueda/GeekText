@@ -14,10 +14,13 @@ public class WishList {
     private int wishId;
 
     @Column
-    private long id;
+    private String userEmail;
 
     @Column
-    private String bookName;
+    private String wishListName;
+
+    @Column
+    private String bookISBN;
 
     public int getWishId() {
         return wishId;
@@ -27,19 +30,27 @@ public class WishList {
         this.wishId = wishId;
     }
 
-    public String getBookName() {
-        return bookName;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public void setUserEmail(String email) {
+        this.userEmail = email;
     }
 
-    public long getId() {
-        return id;
+    public String getWishListName() {
+        return wishListName;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setWishListName(String wishListName) {
+        this.wishListName = wishListName;
+    }
+
+    public String getBookISBN() {
+        return bookISBN;
+    }
+
+    public void setBookISBN(String bookName) {
+        this.bookISBN = bookName;
     }
 }
